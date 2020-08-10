@@ -1,0 +1,22 @@
+{
+  "name": "rssfeed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Conni!~",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "feedparser": "^2.2.10",
+    "iconv-lite": "^0.6.2",
+    "node-cron": "^2.0.3",
+    "node-static": "^0.7.11",
+    "primus": "^7.3.5",
+    "request": "^2.88.2",
+    "rss-parser": "^3.9.0",
+    "ws": "^7.3.1"
+  }
+}
