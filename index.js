@@ -2,29 +2,28 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const Parser = require('rss-parser');
+const cron = require("node-cron");
+const path = require('path');
 
+// Config
+var botStatus = "Rawr!~";
 var prefix = "-";
 var guildID = "";
 var channelID = "";
 
-
-client.on("ready", async () => {   
-    console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);  
-    
-    client.user.setActivity("Rawr!");
-
-});
-
-
+// Vars
 var times  = [];
 var obects = [];
 
-const cron = require("node-cron");
+
+client.on("ready", async () => {   
+    console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);  
+    client.user.setActivity(botStatus);
+});
 
 cron.schedule('* * * * *', () => {
   let parser = new Parser();
 
-  const path = require('path');
   const directoryPath = path.join(__dirname, './feeds/');
   fs.readdir(directoryPath, function (err, files) {
       if (err) return console.log('Unable to scan directory: ' + err);
@@ -49,23 +48,14 @@ cron.schedule('* * * * *', () => {
     
           Promise.all(feedRequests).then(response => {
             var KeyInfo = response[0].items[0];
-            // Debugging // console.log(recent);
     
-            var Embed = new Discord.MessageEmbed();
-            Embed.setTitle(`RSS - ${title}`);
-            Embed.setColor("#00FF00");  
-    
-            
-
+            var Embed = new Discord.MessageEmbed()
+                .setTitle(`RSS - ${title}`)
+                .setColor("#00FF00"); 
+   
             if(obects.includes(obj[0]))
             {
-              var tmp1 = times[obects.indexOf(obj[0])];
-
-              if(KeyInfo[date] === tmp1)
-              {
-                return;
-              }
-              
+              if(KeyInfo[date] === times[obects.indexOf(obj[0])]) return;
             }
             else
             {
@@ -77,13 +67,9 @@ cron.schedule('* * * * *', () => {
               {
                 Embed.addField(KeyTitle, "" + KeyInfo[KeyTitle] + "");
               });
-            let guild2 = client.guilds.cache.find(c => c.id == guildID);
 
-            let category2 = guild2.channels.cache.find(c => c.id == channelID);
-            
-            
-            category2.send(Embed);
-        
+            let channel1 = client.guilds.cache.find(c => c.id == guildID).channels.cache.find(c => c.id == channelID)
+                .send(Embed);        
           });
       });
   });
@@ -95,10 +81,6 @@ client.on("message", async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     
-    console.log(command);
-    console.log(args);
-
-
     if(command === `setup`)
     {
       let parser = new Parser();
@@ -258,8 +240,8 @@ client.on("message", async message => {
           console.error(err)
           return
         }              
-        var Embed = new Discord.MessageEmbed();
-        Embed.setTitle(`Removed - ${args[0]}`);
+        var Embed = new Discord.MessageEmbed()
+            .setTitle(`Removed - ${args[0]}`);
         message.reply(Embed);
 
         //file removed
@@ -270,9 +252,6 @@ client.on("message", async message => {
     {
       let parser = new Parser();
 
-      console.log("obects");
-      console.log(obects);
-      console.log("--------------------");
       obects.forEach(obj =>
         {
 
@@ -291,11 +270,11 @@ client.on("message", async message => {
 
           Promise.all(feedRequests).then(response => {
               var KeyInfo = response[0].items[0];
-              // Debugging // console.log(recent);
 
-              var Embed = new Discord.MessageEmbed();
-              Embed.setTitle(`RSS - ${obj[1]}`);
-              Embed.setColor("#00FF00");  
+              var Embed = new Discord.MessageEmbed()
+                .setTitle(`RSS - ${obj[1]}`)
+                .setColor("#00FF00")
+                .setTimestamp();
 
               obj.forEach(KeyTitle =>
                 {
@@ -303,7 +282,6 @@ client.on("message", async message => {
                   console.log(KeyTitle);
                 });
               
-              Embed.setTimestamp();
               message.reply(Embed);
             }
           )
