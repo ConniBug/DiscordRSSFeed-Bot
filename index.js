@@ -61,11 +61,7 @@ cron.schedule('* * * * *', () => {
             {
               var tmp1 = times[obects.indexOf(obj[0])];
 
-              if(KeyInfo[date] != tmp1)
-              {
-                
-              }
-              else
+              if(KeyInfo[date] === tmp1)
               {
                 return;
               }
