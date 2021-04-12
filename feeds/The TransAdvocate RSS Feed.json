@@ -1,0 +1,11 @@
+{
+    "rssURL": "https://www.transadvocate.com/feed",
+    "titleKey": "title",
+    "publishDateKey": "pubDate",
+    "guid": "guid",
+    "otherKeys":[
+        "link",
+        "dc:creator",
+        "description"
+    ]
+}
