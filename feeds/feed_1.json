@@ -1,0 +1,10 @@
+{
+    "rssURL": "https://gendersociety.com/rssfeeds/channel/feed/rss/activity",
+    "titleKey": "title",
+    "publishDateKey": "pubDate",
+    "guid": "guid",
+    "otherKeys":[
+        "link",
+        "creator"
+    ]
+}
