@@ -1,11 +1,7 @@
 {
-    "rssURL": "https://www.pinknews.co.uk/feed/",
-    "titleKey": "title",
-    "publishDateKey": "pubDate",
-    "guid": "guid",
-    "otherKeys":[
-        "link",
-        "creator",
-        "contentSnippet"
-    ]
+  "rssURL": "https://www.pinknews.co.uk/feed/",
+  "titleKey": "title",
+  "publishDateKey": "pubDate",
+  "guid": "guid",
+  "otherKeys": ["link", "creator", "contentSnippet"]
 }

@@ -1,11 +1,7 @@
 {
-    "rssURL": "https://transequality.org/blog/feed",
-    "titleKey": "title",
-    "publishDateKey": "pubDate",
-    "guid": "guid",
-    "otherKeys":[
-        "link",
-        "dc:creator",
-        "description"
-    ]
+  "rssURL": "https://transequality.org/blog/feed",
+  "titleKey": "title",
+  "publishDateKey": "pubDate",
+  "guid": "guid",
+  "otherKeys": ["link", "dc:creator", "description"]
 }

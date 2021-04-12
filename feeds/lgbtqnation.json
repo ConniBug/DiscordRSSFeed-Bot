@@ -1,11 +1,7 @@
 {
-    "rssURL": "https://feeds.simplecast.com/2_vsJM16",
-    "titleKey": "title",
-    "publishDateKey": "pubDate",
-    "guid": "guid",
-    "otherKeys":[
-        "link",
-        "author",
-        "description"
-    ]
+  "rssURL": "https://feeds.simplecast.com/2_vsJM16",
+  "titleKey": "title",
+  "publishDateKey": "pubDate",
+  "guid": "guid",
+  "otherKeys": ["link", "author", "description"]
 }
