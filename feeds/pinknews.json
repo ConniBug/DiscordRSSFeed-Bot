@@ -3,9 +3,5 @@
   "titleKey": "title",
   "publishDateKey": "pubDate",
   "guid": "guid",
-  "otherKeys": [
-    "link",
-    "creator",
-    "contentSnippet"
-  ]
+  "otherKeys": ["link", "creator", "contentSnippet"]
 }
